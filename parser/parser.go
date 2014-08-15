@@ -542,7 +542,9 @@ func (p *Parser) ParseFile(filename string) (map[string]*Thrift, string, error) 
 			return nil, "", err
 		}
 		files[path] = thrift
-
+    
+    basePath = filepath.Dir(path) // reset basePath to the current operating file
+    
 		for incName, incPath := range thrift.Includes {
 			p, err := p.abs(filepath.Join(basePath, incPath))
 			if err != nil {
