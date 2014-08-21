@@ -326,6 +326,7 @@ func buildParser() parser.Parser {
 		parser.Any(
 			parser.All(parser.Symbol("="),
 				parser.Lexeme(parser.Any(
+          parser.Symbol("[]"),
 					parser.Identifier(), quotedString(),
 					parser.Try(float()), integer()))),
 			nilParser(),
